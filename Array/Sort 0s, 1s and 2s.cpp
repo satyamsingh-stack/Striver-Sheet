@@ -1,24 +1,29 @@
+//Time Complexity: O(N)
+
+//Space Complexity: O(1)
+
+
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        int count0=0;
-        int count1=0;
-        int count2=0;
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]==0)
-                count0++;
-            if(nums[i]==1)
-                count1++;
-            if(nums[i]==2)
-                count2++;
-        }
-        for(int i=0;i<nums.size();i++){
-            if(i<count0)
-                nums[i]=0;
-            else if(i>=count0 && i<count0+count1)
-                nums[i]=1;
-            else
-                nums[i]=2;
+        int low=0;
+        int mid=0;
+        int high=nums.size()-1;
+        while(mid<=high){
+            switch(nums[mid]){
+                case 0:
+                    swap(nums[low],nums[mid]);
+                    mid++;
+                    low++;
+                    break;
+                case 1:
+                    mid++;
+                    break;
+                case 2:
+                    swap(nums[mid],nums[high]);
+                    high--;
+                    break;
+            }
         }
     }
 };
