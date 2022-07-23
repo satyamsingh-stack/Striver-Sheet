@@ -1,3 +1,5 @@
+//Time Comp: O(N)
+//Space Comp: O(1)
 int ceil(Node *root,int x){
 	Node *res=NULL;
 	while(root!=NULL){
