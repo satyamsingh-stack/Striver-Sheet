@@ -1,3 +1,5 @@
+//Time Comp: O(N)
+//Space Comp: O(N)
 class Solution {
   public:
     vector <int> bottomView(Node *root) {
