@@ -1,13 +1,14 @@
-class Solution {
-public:
-    bool isvalid(TreeNode* root,long long int  l,long long int r){
-        if(root==NULL)
-            return true;
-        if(root->val>=r && root->val<=l)
-            return false;
-        return isvalid(root->left,l,root->val) && isvalid(root->right,root->val,r);
+//Time Comp: O(N)
+//Space Comp: O(1)
+    bool solve(TreeNode*root,long long int lb,long long int ub)
+    {
+        if(root==nullptr)return true;
+        if((root->val<ub&&root->val>lb)&&(solve(root->left,lb,root->val))&&(solve(root->right,root->val,ub))) return true;
+        else return false;
     }
     bool isValidBST(TreeNode* root) {
-        return isvalid(root,LONG_MIN,LONG_MAX);
+        long long int lb=-2147483649;
+        long long int ub=2147483648;
+        bool ans =solve(root,lb,ub);
+        return ans;
     }
-};
